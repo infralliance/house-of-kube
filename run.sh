@@ -13,7 +13,7 @@ while true; do
   echo "   7) 💾 storage        PVCs, PVs, StorageClasses, CSI"
   echo "   8) 🛡️ policy        Admission controllers, PDBs"
   echo "   9) 🧬 crd            Custom Resource Definitions"
-  echo "  10) Exit"
+  echo "  10) 🚪 Exit"
   echo
   read -rp "#? " option
 
@@ -44,9 +44,50 @@ while true; do
     if [ -z "$script" ]; then
       break
     fi
-    echo "Running $script"
-    bash "$script"
+
+    echo
+    echo "🔍 What would you like to do with '$script'?"
+    echo "   1) 🚀 Run"
+    echo "   2) 🧪 View source"
+    echo "   3) 🔙 Back to scripts"
+    echo
+    read -rp "#? " action
+
+    case "$action" in
+      1)
+        echo "Running $script..."
+        echo
+        usage=$(grep -E '^#\s*Usage:' "$script")
+        if [ -n "$usage" ]; then
+          echo "$usage"
+          echo
+          args=""
+          usage_args=$(echo "$usage" | sed -E 's/^#\s*Usage:\s*[^ ]+\s*//')
+          for arg in $usage_args; do
+            # Skip brackets and optionality marks
+            clean_arg=$(echo "$arg" | sed -E 's/[\[\]<>]//g')
+            read -rp "$clean_arg: " value
+            args+="$value "
+          done
+        fi
+        echo
+        bash "$script" $args
+        ;;
+      2)
+        echo
+        cat "$script"
+        ;;
+      3)
+        break
+        ;;
+      *)
+        echo "Invalid action"
+        ;;
+    esac
+
+    echo
     read -n 1 -s -r -p "Press any key to continue..."
     break
   done
+
 done
