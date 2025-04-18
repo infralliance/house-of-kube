@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang='en'><head><meta charset='UTF-8'>
+<title>House of Kube – Script Index</title>
+<style>body{font-family:sans-serif;padding:2rem;max-width:1000px;margin:auto;}
+h1{color:#222;}code{background:#eee;padding:2px 4px;border-radius:4px;}
+ul{padding-left:1rem;}li{margin-bottom:0.75rem;}.level{font-size:0.85em;color:#666;}
+</style></head><body><h1>🏯 House of Kube — Script Index</h1><p>Below is the list of kubectl creation scripts grouped by category:</p>
+<section><h2>📂 autoscaling/</h2><ul>
+<li><strong>create-horizontalpodautoscaler.sh</strong> <span class='level'>(Level: unknown)</span><br><code>Usage: ./create-horizontalpodautoscaler.sh <name> [namespace]</code></li>
+<li><strong>create-verticalpodautoscaler.sh</strong> <span class='level'>(Level: unknown)</span><br><code>Usage: ./create-verticalpodautoscaler.sh <name> <targetResource> <containerName></code></li>
+</ul></section>
+<section><h2>📂 core/</h2><ul>
+<li><strong>create-configmap.sh</strong> <span class='level'>(Level: unknown)</span><br><code>Usage: ./create-configmap.sh <name> [namespace]</code></li>
+<li><strong>create-namespace.sh</strong> <span class='level'>(Level: unknown)</span><br><code>Usage: ./create-namespace.sh <name> [namespace]</code></li>
+<li><strong>create-persistentvolume.sh</strong> <span class='level'>(Level: unknown)</span><br><code>Usage: ./create-persistentvolume.sh <name> [namespace]</code></li>
+<li><strong>create-persistentvolumeclaim.sh</strong> <span class='level'>(Level: unknown)</span><br><code>Usage: ./create-persistentvolumeclaim.sh <name> [namespace]</code></li>
+<li><strong>create-pod.sh</strong> <span class='level'>(Level: unknown)</span><br><code>Usage: ./create-pod.sh <name> [namespace]</code></li>
+<li><strong>create-poddisruptionbudget.sh</strong> <span class='level'>(Level: unknown)</span><br><code>Usage: ./create-poddisruptionbudget.sh <name> <minAvailable> <labelKey=labelValue></code></li>
+<li><strong>create-secret.sh</strong> <span class='level'>(Level: unknown)</span><br><code>Usage: ./create-secret.sh <name> [namespace]</code></li>
+<li><strong>create-service.sh</strong> <span class='level'>(Level: unknown)</span><br><code>Usage: ./create-service.sh <name> [namespace]</code></li>
+<li><strong>create-serviceaccount.sh</strong> <span class='level'>(Level: unknown)</span><br><code>Usage: ./create-serviceaccount.sh <name> [namespace]</code></li>
+</ul></section>
+<section><h2>📂 crd/</h2><ul>
+<li><strong>create-customresourcedefinition.sh</strong> <span class='level'>(Level: unknown)</span><br><code>Usage: ./create-customresourcedefinition.sh <name> [namespace]</code></li>
+</ul></section>
+<section><h2>📂 networking/</h2><ul>
+<li><strong>create-endpointslice.sh</strong> <span class='level'>(Level: unknown)</span><br><code>Usage: ./create-endpointslice.sh <name> <ip> <port> <protocol></code></li>
+<li><strong>create-ingress.sh</strong> <span class='level'>(Level: unknown)</span><br><code>Usage: ./create-ingress.sh <name> [namespace]</code></li>
+<li><strong>create-networkpolicy.sh</strong> <span class='level'>(Level: unknown)</span><br><code>Usage: ./create-networkpolicy.sh <name> [namespace]</code></li>
+</ul></section>
+<section><h2>📂 policy/</h2><ul>
+<li><strong>create-mutatingwebhookconfiguration.sh</strong> <span class='level'>(Level: unknown)</span><br><code>Usage: ./create-mutatingwebhookconfiguration.sh <name> [namespace]</code></li>
+<li><strong>create-validatingwebhookconfiguration.sh</strong> <span class='level'>(Level: unknown)</span><br><code>Usage: ./create-validatingwebhookconfiguration.sh <name> [namespace]</code></li>
+</ul></section>
+<section><h2>📂 rbac/</h2><ul>
+<li><strong>create-clusterrole.sh</strong> <span class='level'>(Level: unknown)</span><br><code>Usage: ./create-clusterrole.sh <name> [namespace]</code></li>
+<li><strong>create-clusterrolebinding.sh</strong> <span class='level'>(Level: unknown)</span><br><code>Usage: ./create-clusterrolebinding.sh <name> [namespace]</code></li>
+<li><strong>create-role.sh</strong> <span class='level'>(Level: unknown)</span><br><code>Usage: ./create-role.sh <name> [namespace]</code></li>
+<li><strong>create-rolebinding.sh</strong> <span class='level'>(Level: unknown)</span><br><code>Usage: ./create-rolebinding.sh <name> [namespace]</code></li>
+</ul></section>
+<section><h2>📂 setup/</h2><ul>
+<li><strong>install-arkade.sh</strong> <span class='level'>(Level: easy)</span><br><code>Usage: ./install-arkade.sh</code></li>
+<li><strong>install-helm.sh</strong> <span class='level'>(Level: easy)</span><br><code>Usage: ./install-helm.sh</code></li>
+<li><strong>install-helmfile.sh</strong> <span class='level'>(Level: easy)</span><br><code>Usage: ./install-helmfile.sh</code></li>
+<li><strong>install-k3s.sh</strong> <span class='level'>(Level: easy)</span><br><code>Usage: ./install-k3s.sh</code></li>
+<li><strong>install-k9s.sh</strong> <span class='level'>(Level: easy)</span><br><code>Usage: ./install-k9s.sh</code></li>
+<li><strong>install-kind.sh</strong> <span class='level'>(Level: easy)</span><br><code>Usage: ./install-kind.sh</code></li>
+<li><strong>install-kubectl.sh</strong> <span class='level'>(Level: easy)</span><br><code>Usage: ./install-kubectl.sh</code></li>
+<li><strong>install-kubectx.sh</strong> <span class='level'>(Level: easy)</span><br><code>Usage: ./install-kubectx.sh</code></li>
+<li><strong>install-kubeseal.sh</strong> <span class='level'>(Level: easy)</span><br><code>Usage: ./install-kubeseal.sh</code></li>
+<li><strong>install-kustomize.sh</strong> <span class='level'>(Level: easy)</span><br><code>Usage: ./install-kustomize.sh</code></li>
+<li><strong>install-minikube.sh</strong> <span class='level'>(Level: easy)</span><br><code>Usage: ./install-minikube.sh</code></li>
+<li><strong>install-stern.sh</strong> <span class='level'>(Level: easy)</span><br><code>Usage: ./install-stern.sh</code></li>
+<li><strong>select-kube-context.sh</strong> <span class='level'>(Level: easy)</span><br><code>Usage: ./select-kube-context.sh</code></li>
+<li><strong>uninstall-k3s.sh</strong> <span class='level'>(Level: easy)</span><br><code>Usage: ./uninstall-k3s.sh</code></li>
+<li><strong>uninstall-minikube.sh</strong> <span class='level'>(Level: easy)</span><br><code>Usage: ./uninstall-minikube.sh</code></li>
+</ul></section>
+<section><h2>📂 storage/</h2><ul>
+<li><strong>create-csidriver.sh</strong> <span class='level'>(Level: unknown)</span><br><code>Usage: ./create-csidriver.sh <name> [namespace]</code></li>
+<li><strong>create-csinode.sh</strong> <span class='level'>(Level: unknown)</span><br><code>Usage: ./create-csinode.sh <name> [namespace]</code></li>
+<li><strong>create-storageclass.sh</strong> <span class='level'>(Level: unknown)</span><br><code>Usage: ./create-storageclass.sh <name> [namespace]</code></li>
+<li><strong>create-volumeattachment.sh</strong> <span class='level'>(Level: unknown)</span><br><code>Usage: ./create-volumeattachment.sh <name> [namespace]</code></li>
+</ul></section>
+<section><h2>📂 workloads/</h2><ul>
+<li><strong>create-cronjob.sh</strong> <span class='level'>(Level: unknown)</span><br><code>Usage: ./create-cronjob.sh <name> [namespace]</code></li>
+<li><strong>create-daemonset.sh</strong> <span class='level'>(Level: unknown)</span><br><code>Usage: ./create-daemonset.sh <name> [namespace]</code></li>
+<li><strong>create-deployment.sh</strong> <span class='level'>(Level: unknown)</span><br><code>Usage: ./create-deployment.sh <name> [namespace]</code></li>
+<li><strong>create-job.sh</strong> <span class='level'>(Level: unknown)</span><br><code>Usage: ./create-job.sh <name> [namespace]</code></li>
+<li><strong>create-replicaset.sh</strong> <span class='level'>(Level: unknown)</span><br><code>Usage: ./create-replicaset.sh <name> [namespace]</code></li>
+<li><strong>create-statefulset.sh</strong> <span class='level'>(Level: unknown)</span><br><code>Usage: ./create-statefulset.sh <name> [namespace]</code></li>
+</ul></section>
+</body></html>
