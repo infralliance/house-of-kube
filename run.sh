@@ -31,7 +31,12 @@ while true; do
     *) echo "Invalid option"; sleep 1; continue ;;
   esac
 
-  scripts=$(find scripts/$folder -type f -name "create-*.sh" | sort)
+  # Recherche des scripts en fonction du dossier
+  if [ "$folder" == "setup" ]; then
+    scripts=$(find scripts/$folder -type f -name "install-*.sh" | sort)
+  else
+    scripts=$(find scripts/$folder -type f -name "create-*.sh" | sort)
+  fi
 
   if [ -z "$scripts" ]; then
     echo "No scripts found in $folder"
@@ -91,3 +96,4 @@ while true; do
   done
 
 done
+
