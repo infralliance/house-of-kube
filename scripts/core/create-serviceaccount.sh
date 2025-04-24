@@ -2,8 +2,15 @@
 # Auto-fixed by House of Kube batch
 # Usage: ./create-serviceaccount.sh <name> [namespace]
 
-[ -z "$1" ] && echo "Usage: ./create-serviceaccount.sh <name> [namespace]" && exit 1
+# Check if name is provided
+if [ -z "$1" ]; then
+  echo "Usage: ./create-serviceaccount.sh <name> [namespace]"
+  exit 1
+fi
+
 NAME="$1"
 NS="${2:-default}"
 
-kubectl create service clusterip "$NAME" --tcp=80:80 --dry-run=client -n "$NS" -o yaml | kubectl apply -f -
+# Create the ServiceAccount in the specified namespace
+echo "Creating ServiceAccount '$NAME' in namespace '$NS'..."
+kubectl create serviceaccount "$NAME" -n "$NS" --dry-run=client -o yaml | kubectl apply -f -
