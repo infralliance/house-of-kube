@@ -1,9 +1,16 @@
 #!/bin/bash
-# Auto-fixed by House of Kube batch
+# Create a Deployment from user input
 # Usage: ./create-deployment.sh <name> [namespace]
 
-[ -z "$1" ] && echo "Usage: ./create-deployment.sh <name> [namespace]" && exit 1
-NAME="$1"
-NS="${2:-default}"
+set -e
 
-kubectl create deployment "$NAME" --image=nginx --dry-run=client -n "$NS" -o yaml | kubectl apply -f -
+[ -z "$1" ] && echo "Usage: $0 <name> [namespace]" && exit 1
+
+NAME="$1"
+NAMESPACE="${2:-default}"
+
+read -p "🐳 Enter the container image (default: nginx): " IMAGE
+IMAGE="${IMAGE:-nginx}"
+
+kubectl create deployment "$NAME" --image="$IMAGE" --dry-run=client -n "$NAMESPACE" -o yaml | kubectl apply -f -
+
