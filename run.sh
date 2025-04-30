@@ -25,9 +25,8 @@ while true; do
     5) folder="rbac" ;;
     6) folder="autoscaling" ;;
     7) folder="storage" ;;
-    8) folder="policy" ;;
-    9) folder="crd" ;;
-    10) exit 0 ;;
+    8) folder="crd" ;;
+    9) exit 0 ;;
     *) echo "Invalid option"; sleep 1; continue ;;
   esac
 
