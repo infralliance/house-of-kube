@@ -1,9 +1,23 @@
 #!/bin/bash
-# Auto-fixed by House of Kube batch
-# Usage: ./create-clusterrolebinding.sh <name> [namespace]
+# Interactive script to create a ClusterRoleBinding
+# Usage: ./create-clusterrolebinding.sh
 
-[ -z "$1" ] && echo "Usage: ./create-clusterrolebinding.sh <name> [namespace]" && exit 1
-NAME="$1"
-NS="${2:-default}"
+read -p "<binding-name>: " BINDING_NAME
+read -p "🔗 Bind to ClusterRole (name): " CLUSTERROLE
+read -p "👤 Subject kind (User/Group/ServiceAccount): " SUBJECT_KIND
+read -p "🔐 Subject name: " SUBJECT_NAME
+read -p "[namespace for ServiceAccount only, optional]: " NS
 
-kubectl create rolebinding "$NAME" --role=admin --user=dev --dry-run=client -n "$NS" -o yaml | kubectl apply -f -
+NS_ARG=""
+if [[ "$SUBJECT_KIND" == "ServiceAccount" && -n "$NS" ]]; then
+  NS_ARG="--namespace=$NS"
+fi
+
+kubectl create clusterrolebinding "$BINDING_NAME" \
+  --clusterrole="$CLUSTERROLE" \
+  --${SUBJECT_KIND,,}="$SUBJECT_NAME" \
+  $NS_ARG \
+  --dry-run=client -o yaml | kubectl apply -f -
+
+echo "✅ ClusterRoleBinding '$BINDING_NAME' created."
+

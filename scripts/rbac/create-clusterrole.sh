@@ -1,9 +1,32 @@
 #!/bin/bash
-# Auto-fixed by House of Kube batch
-# Usage: ./create-clusterrole.sh <name> [namespace]
+# Interactive script to create a ClusterRole
+# Usage: ./create-clusterrole.sh
 
-[ -z "$1" ] && echo "Usage: ./create-clusterrole.sh <name> [namespace]" && exit 1
-NAME="$1"
-NS="${2:-default}"
+read -p "<clusterrole-name>: " ROLE_NAME
 
-kubectl create role "$NAME" --verb=get,list --resource=pods --dry-run=client -n "$NS" -o yaml | kubectl apply -f -
+# Verbs selection
+echo "✅ Select verbs to assign (space-separated, e.g., get list watch):"
+echo "Available: get list watch create update patch delete deletecollection"
+read -p "Enter verbs: " VERBS
+if [ -z "$VERBS" ]; then
+  echo "❌ No verbs provided. Aborting."
+  exit 1
+fi
+
+# Resources
+read -p "📚 Enter resources (default: pods): " RESOURCES
+RESOURCES="${RESOURCES:-pods}"
+
+cat <<EOF | kubectl apply -f -
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: $ROLE_NAME
+rules:
+- apiGroups: [""]
+  resources: [${RESOURCES// /,}]
+  verbs: [${VERBS// /,}]
+EOF
+
+echo "✅ ClusterRole '$ROLE_NAME' created."
+

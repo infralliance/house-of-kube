@@ -1,9 +1,20 @@
 #!/bin/bash
-# Auto-fixed by House of Kube batch
-# Usage: ./create-rolebinding.sh <name> [namespace]
+# Interactive script to create a RoleBinding
+# Usage: ./create-rolebinding.sh
 
-[ -z "$1" ] && echo "Usage: ./create-rolebinding.sh <name> [namespace]" && exit 1
-NAME="$1"
-NS="${2:-default}"
+read -p "<rolebinding-name>: " RB_NAME
+read -p "[namespace]: " NS
+NS="${NS:-default}"
+read -p "🔗 Bind to Role (name): " ROLE_NAME
+read -p "👤 Subject kind (User/Group/ServiceAccount): " SUBJECT_KIND
+read -p "🔐 Subject name: " SUBJECT_NAME
 
-kubectl create rolebinding "$NAME" --role=admin --user=dev --dry-run=client -n "$NS" -o yaml | kubectl apply -f -
+echo "📄 Generating RoleBinding YAML for '$RB_NAME' in namespace '$NS'..."
+kubectl create rolebinding "$RB_NAME" \
+  --role="$ROLE_NAME" \
+  --namespace="$NS" \
+  --${SUBJECT_KIND,,}="$SUBJECT_NAME" \
+  --dry-run=client -o yaml | kubectl apply -f -
+
+echo "✅ RoleBinding '$RB_NAME' applied."
+
